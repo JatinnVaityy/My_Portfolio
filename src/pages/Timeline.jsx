@@ -3,13 +3,13 @@ import Container from '../components/Container';
 
 const TimelineItem = ({ company, role, duration, description }) => {
     return (
-        <li className="mb-10 ms-4">
-            <div className="absolute w-3 h-3 rounded-full mt-1.5 -start-2 border border-white bg-purple-700"></div>
-            <time className="mb-1 text-sm font-normal leading-none text-black ">{duration}</time>
-            <h3 className="text-md my-2 font-semibold text-gray-900 ">{role} . <span className="text-sm font-thin">{company}</span></h3>
-            <ul className="mb-4 text-md font-normal  text-black list-disc list-inside">
+        <li className="mb-10 ms-4" data-aos="fade-left">
+            <div className="absolute w-6 h-6 rounded-full mt-1.5 -start-8 border border-white bg-button"></div>
+            <time className="mb-1 text-md font-normal leading-none  ">{duration}</time>
+            <h3 className="text-xl my-2 font-semibold text-button ">{role} . <span className="text-md font-thin">{company}</span></h3>
+            <ul className="mb-4 text-sm text-justify font-normal list-disc list-inside md:text-md">
                 {description.map((desc, index) => (
-                    <li key={index} className="  ">{desc}</li>
+                    <li key={index} className="my-2">{desc}</li>
                 ))}
             </ul>
         </li>
@@ -40,9 +40,9 @@ const Timeline = () => {
 
     return (
         <Container>
-            <div id="experience" className=' w-full md:w-[50%] my-6 flex flex-col items-center gap-4'>
+            <div id="experience" className=' w-full md:w-[50%] my-6 flex flex-col items-center gap-4' data-aos="fade-up">
                 <div className='w-full flex justify-center text-2xl font-thin my-4'>
-                    <h1 className='text-2xl md:text-4xl font-bold'>Experience</h1>
+                    <h1 className='text-4xl md:text-4xl font-bold text-button'>Experience</h1>
                 </div>
                 <ol className="relative border-s-4 border-purple-200">
                     {timelineData.map((item, index) => (

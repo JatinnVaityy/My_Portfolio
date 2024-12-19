@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Container from "../components/Container";
 import ContactMe from "../assets/contactMe.png"
+import { toast } from "react-hot-toast";
+import emailjs from "@emailjs/browser"
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -9,7 +11,6 @@ const Contact = () => {
         message: "",
     });
 
-    const [status, setStatus] = useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,34 +20,51 @@ const Contact = () => {
         }));
     };
 
+    const templateParams={
+        from_name:formData.name,
+        from_email:formData.email,
+        to_name:"akash dange",
+        message:formData.message
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             // Simulating a form submission (replace this with your backend/API)
-            console.log("Form submitted:", formData);
-            setStatus("Message sent successfully!");
+           
+            const result = await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID, // Replace with your EmailJS service ID
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // Replace with your EmailJS template ID
+                templateParams,
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY // Replace with your EmailJS user ID (found in EmailJS dashboard)
+              );
+            toast.success("Thank you for reaching out. I will get back to you soon.");
+           
         } catch (error) {
-            setStatus("Something went wrong. Please try again.");
+            console.log(error);
+            toast.error("Error while sending mail");
+        }finally{
+            setFormData({name:"",email:"",message:""});
         }
     };
 
     return (
         <>
             <Container>
-                <div id="contact" className="w-full flex flex-col items-center gap-4">
+                <div id="contact" className="w-full flex flex-col items-center gap-4 " data-aos="fade-up">
                     <div className='w-full flex justify-center text-2xl font-thin my-6'>
-                        <h1 className="text-2xl md:text-4xl font-bold">Contact</h1>
+                        <h1 className="text-4xl md:text-4xl font-bold text-button">Contact</h1>
                     </div>
-                    <div className="w-full  flex flex-col md:flex-row justify-between">
+                    <div className="w-full  flex flex-col md:flex-row justify-between ">
                         <div className="w-full md:w-[50%]">
                             <img src={ContactMe} alt="" />
                         </div>
-                        <div className="w-full md:w-[50%] bg-white p-6 rounded-lg shadow-md">
+                        <div className="w-full md:w-[50%] bg-primary p-6 rounded-lg shadow-md border-2 border-border">
                             <form onSubmit={handleSubmit}>
                                 <div className="mb-4">
                                     <label
                                         htmlFor="name"
-                                        className="block text-md my-2 font-medium text-purple-700"
+                                        className="block text-md my-2 font-medium "
                                     >
                                         Name
                                     </label>
@@ -57,13 +75,13 @@ const Contact = () => {
                                         value={formData.name}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 "
+                                        className="w-full px-4 py-2 text-black border rounded-lg focus:outline-none focus:ring-2 "
                                     />
                                 </div>
                                 <div className="mb-4">
                                     <label
                                         htmlFor="email"
-                                        className="block text-md my-2 font-medium text-purple-700"
+                                        className="block text-md my-2 font-medium "
                                     >
                                         Email
                                     </label>
@@ -74,13 +92,13 @@ const Contact = () => {
                                         value={formData.email}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 "
+                                        className="w-full px-4 py-2 text-black border rounded-lg focus:outline-none focus:ring-2 "
                                     />
                                 </div>
                                 <div className="mb-4">
                                     <label
                                         htmlFor="message"
-                                        className="block text-md my-2 font-medium text-purple-700"
+                                        className="block text-md my-2 font-medium "
                                     >
                                         Message
                                     </label>
@@ -90,17 +108,16 @@ const Contact = () => {
                                         value={formData.message}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 "
+                                        className="w-full px-4 py-2 text-black border rounded-lg focus:outline-none focus:ring-2 "
                                     />
                                 </div>
                                 <button
                                     type="submit"
-                                    className="w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-4 py-2 bg-button text-gray-900 rounded-lg "
                                 >
                                     Send Message
                                 </button>
                             </form>
-                            {status && <p className="mt-4 text-center text-sm text-green-600">{status}</p>}
                         </div>
                     </div>
                 </div>

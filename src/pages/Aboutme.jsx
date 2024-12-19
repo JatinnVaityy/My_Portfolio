@@ -8,7 +8,7 @@ function Aboutme() {
                 <section id="about" className='mt-[50px] my-2 flex flex-col items-center '>
 
                     <div className='w-full flex justify-center text-2xl font-thin  my-6'>
-                        <h1 className='text-2xl md:text-4xl font-bold'>About me</h1>
+                        <h1 className='text-4xl md:text-4xl font-bold text-button'>About me</h1>
                     </div>
 
                     <div className='flex flex-col md:flex-row '>
@@ -26,14 +26,14 @@ function Aboutme() {
                                 Akash Dange
                             </h1>
 
-                            <span className='text-purple-500 bg-purple-200 px-4 py-1 rounded-md'>web developer</span>
+                            <span className='text-button bg-secodary px-4 py-1 rounded-md border-2 border-border'>web developer</span>
 
                             <p className=' w-full md:w-[70%] text-md text-justify'>
                                 I am currently pursuing a BE degree in Computer Engineering at Terna Engineering College.
                                 I have also completed Diploma in Information Technology from Government Polytechnic Thane. My knowledge base includes proficiency in HTML, CSS, C, C++, MySQL, Java, and Python. I am currently working towards becoming a proficient web developer.
                             </p>
 
-                            <button className=' w-[50%] md:w-[20%] py-2 px-4 rounded-md bg-purple-700 text-white text-sm md:font-semibold '>
+                            <button className=' w-[50%] md:w-[20%] py-2 px-4 rounded-md bg-button text-white text-sm md:font-semibold '>
                                 {`Resume`}
                             </button>
                         </div>
