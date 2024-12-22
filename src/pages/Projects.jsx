@@ -59,10 +59,10 @@ function Projects() {
                                     Multiple Users & Insights: Allows multiple users to share their locations, providing insights into how location tracking works in applications like food delivery services.
                                 </p>
                                 <div className='flex w-full gap-4 '>
-                                    <a href="https://github.com/AkashDange03/RealTimeTracker" target="_blank">
+                                    <a href="https://realtimetracker-g6rh.onrender.com/" target="_blank">
                                         <div className='text-sm font-bold border-2 border-button  px-2 py-2 md:px-6 md:py-2 hover:bg-button hover:text-gray-900'>Live Demo</div>
                                     </a>
-                                    <a href="https://realtimetracker-g6rh.onrender.com/" target="_blank">
+                                    <a href="https://github.com/AkashDange03/RealTimeTracker" target="_blank">
                                         <div className='text-sm  font-bold border-2 border-button  px-2 py-2 md:px-6 md:py-2 hover:bg-button hover:text-gray-900'>Source Code</div>
                                     </a>
                                 </div>

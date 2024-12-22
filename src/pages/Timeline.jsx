@@ -3,7 +3,7 @@ import Container from '../components/Container';
 
 const TimelineItem = ({ company, role, duration, description }) => {
     return (
-        <li className="mb-10 ms-4" data-aos="fade-left">
+        <li className="mb-10 ms-4" data-aos="fade-up" >
             <div className="absolute w-6 h-6 rounded-full mt-1.5 -start-8 border border-white bg-button"></div>
             <time className="mb-1 text-md font-normal leading-none  ">{duration}</time>
             <h3 className="text-xl my-2 font-semibold text-button ">{role} . <span className="text-md font-thin">{company}</span></h3>
@@ -40,11 +40,11 @@ const Timeline = () => {
 
     return (
         <Container>
-            <div id="experience" className=' w-full md:w-[50%] my-6 flex flex-col items-center gap-4' data-aos="fade-up">
+            <div id="experience" className=' w-full md:w-[50%] my-6 flex flex-col items-center gap-4' >
                 <div className='w-full flex justify-center text-2xl font-thin my-4'>
                     <h1 className='text-4xl md:text-4xl font-bold text-button'>Experience</h1>
                 </div>
-                <ol className="relative border-s-4 border-purple-200">
+                <ol className="relative border-s-4 border-purple-200" >
                     {timelineData.map((item, index) => (
                         <TimelineItem
                             key={index}
