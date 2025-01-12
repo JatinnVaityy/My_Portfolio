@@ -1,5 +1,5 @@
 import React from 'react'
-import AkashPic from "../assets/AkashPhoto.jpeg"
+import myphoto from "../assets/myphoto.png"
 import Container from '../components/Container'
 function Aboutme() {
     return (
@@ -23,13 +23,13 @@ function Aboutme() {
                         <div className='flex flex-col justify-center  items-center md:items-start gap-4 w-full'>
 
                             <h1 className=' text-2xl md:text-4xl font-bold'>
-                                Akash Dange
+                                Jatin Vaity
                             </h1>
 
                             <span className='text-button bg-secodary px-4 py-1 rounded-md border-2 border-border'>web developer</span>
 
                             <p className=' w-full md:w-[70%] text-md text-justify'>
-                                I am currently pursuing a BE degree in Computer Engineering at Terna Engineering College.
+                                I am currently pursuing a Bachlero's degree in  Electronics & Telecommunication Engineering at Vivekanand Education Society's Institue of Technology (VESIT).
                                 I have also completed Diploma in Information Technology from Government Polytechnic Thane. My knowledge base includes proficiency in HTML, CSS, C, C++, MySQL, Java, and Python. I am currently working towards becoming a proficient web developer.
                             </p>
 

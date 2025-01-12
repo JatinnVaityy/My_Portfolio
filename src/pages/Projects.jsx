@@ -1,87 +1,127 @@
-import React from 'react'
-import Container from '../components/Container'
-import CodeArena from "../assets/CodeArena.png"
-import RealTimeTracker from "../assets/RealTimeTracker.png"
+import React, { useState } from "react";
+import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
+
 function Projects() {
-    return (
-        <>
-            <Container>
+  const [clicked, setClicked] = useState("hardware");
 
-                <div id="projects" className='w-full flex flex-col items-center '>
-                    <div className='w-full flex justify-center text-2xl font-thin my-4'>
-                        <h1 className='text-4xl md:text-4xl font-bold text-button'>Projects</h1>
-                    </div>
+  const hardwareProjects = [
+    {
+      title: "Smart Umbrella Stand",
+      description:
+        "An automated umbrella drying stand with smart sensors and IoT integration for efficient drying and notifications.",
+      technologies: ["ESP32", "Ultrasonic Sensor", "Relay Module"],
+    },
+    {
+      title: "Automated Hydroponics System ",
+      description:
+        "A fully automated hydroponics system for growing plants with controlled environment parameters, based on STM32.",
+      technologies: ["STM32", "Sensors", "Water Pump", "Relay Module"],
+    },
+    {
+      title: "RSA Encryption Using FPGA ",
+      description:
+        "Implementing RSA encryption and decryption algorithm using FPGA, specifically Elbert V2.",
+      technologies: ["FPGA", "Elbert V2", "VHDL"],
+    },
+    {
+      title: "Smart Wheelchair (ESP32)",
+      description:
+        "A smart wheelchair with IoT integration, remote control, and health monitoring using ESP32.",
+      technologies: ["ESP32", "Sensors", "ESP-NOW"],
+    },
+  ];
 
-                    <div className='flex flex-col justify-center items-center' data-aos="fade-right">
-                        <div className='w-full md:w-[90%] flex flex-col-reverse items-center md:flex-row gap-10 py-6 px-4 my-4'>
-                            <div className=' flex flex-col gap-4'>
-                                <h1 className='text-2xl md:text-4xl font-bold'> CodeArena</h1>
-                                <div className='flex flex-wrap gap-4  text-gray-900'>
-                                    <div className='text-sm  font-bold bg-button px-4 md:px-6 py-2 '>React.js</div>
-                                    <div className='text-sm  font-bold bg-button px-4 md:px-6 py-2 '>Node.js</div>
-                                    <div className='text-sm  font-bold bg-button px-4 md:px-6 py-2 '>Socket.io</div>
-                                    <div className='text-sm  font-bold bg-button px-4 md:px-6 py-2'>TailwindCss</div>
-                                </div>
+  const softwareProjects = [
+    {
+      title: "Real-Time Chatbot",
+      description:
+        "A conversational chatbot that provides instant replies and can handle multiple topics.",
+      technologies: ["Node.js", "Socket.io", "React.js"],
+    },
+    {
+      title: "Furniture E-commerce",
+      description:
+        "An online platform for purchasing furniture, complete with product categories, filtering.",
+      technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    },
+    {
+      title: "To-Do List",
+      description:
+        "A simple, interactive to-do list application with task management features, designed for daily use.",
+      technologies: ["React.js"],
+    },
+  ];
 
-                                <p className='w-full md:w-[90%] text-wrap text-justify text-md md:text-lg'  >
-                                    Collaborative Code Editor: Developed an interactive web application allowing users to write and execute code collaboratively in real-time.<br />
-                                    Chat Feature: Implemented a chat feature to enable effective communication and collaboration among users on the platform.<br />
-                                    Responsive & User-Friendly: Ensured the platform was responsive and optimized for various devices and screen sizes.<br />
-                                    Real-time Collaboration: Integrated real-time functionalities using WebSocket or similar technologies to enable seamless collaboration.
+  return (
+    <div id="projects" className="flex flex-col items-center py-8 px-4">
+      {/* Title */}
+      <h1 className="text-4xl font-bold mb-6 text-[#22c55e] py-4 px-8 rounded-lg">
+        Projects
+      </h1>
 
-                                </p>
-                                <div className='flex w-full gap-4 '>
-                                    <a href="https://code-arena-one.vercel.app/" target="_blank">
-                                        <div className='text-sm  font-bold border-2 border-button px-2 py-2 md:px-6 md:py-2 hover:bg-button hover:text-gray-900'>Live Demo</div>
-                                    </a>
+      {/* Toggle Buttons */}
+      <div className="w-full flex justify-center gap-6 mb-8">
+        <button
+          className={`py-2 px-6 rounded-md text-sm font-semibold transition-colors duration-300 ${
+            clicked === "hardware"
+              ? "bg-[#22c55e] text-white"
+              : "bg-transparent text-white border border-[#22c55e] hover:bg-[#22c55e]"
+          }`}
+          onClick={() => setClicked("hardware")}
+        >
+          Hardware
+        </button>
+        <button
+          className={`py-2 px-6 rounded-md text-sm font-semibold transition-colors duration-300 ${
+            clicked === "software"
+              ? "bg-[#22c55e] text-white"
+              : "bg-transparent text-white border border-[#22c55e] hover:bg-[#22c55e]"
+          }`}
+          onClick={() => setClicked("software")}
+        >
+          Software
+        </button>
+      </div>
 
-                                    <a href="https://github.com/AkashDange03/CodeArena" target="_blank">
-                                        <div className='text-sm  font-bold border-2 border-button px-2 py-2 md:px-6 md:py-2 hover:bg-button hover:text-gray-900'>Source Code</div>
-                                    </a>
-                                </div>
-                            </div>
-                            <img src={CodeArena} alt="" className='w-[100%] md:w-[600px]' data-aos="fade-left" />
-                        </div>
-
-                        <div className='w-full md:w-[90%] flex flex-col-reverse md:flex-row gap-10 py-6 px-4 my-4' data-aos="fade-right" >
-                            <div className=' flex flex-col  gap-4'>
-                                <h1 className='text-2xl md:text-4xl font-bold'>Location Tracker</h1>
-                                <div className='flex flex-wrap gap-4 text-black'>
-                                    <div className='text-sm  font-bold bg-button px-4 md:px-6 py-2'>EJS</div>
-                                    <div className='text-sm  font-bold bg-button px-4 md:px-6 py-2'>Node.js</div>
-                                    <div className='text-sm font-bold bg-button px-4 md:px-6 py-2'>Socket.io</div>
-                                    <div className='text-sm  font-bold bg-button px-4 md:px-6 py-2 '>Express.js</div>
-                                </div>
-
-                                <p className='w-full md:w-[90%] text-wrap text-justify text-md md:text-lg'>
-                                    Real-time Location Tracking: Collects live location data using the Geolocation API, with updates every 5 seconds.<br />
-                                    WebSocket & Leaflet Integration: Uses WebSockets for real-time communication and Leaflet to display locations on an interactive map.<br />
-                                    Multiple Users & Insights: Allows multiple users to share their locations, providing insights into how location tracking works in applications like food delivery services.
-                                </p>
-                                <div className='flex w-full gap-4 '>
-                                    <a href="https://realtimetracker-g6rh.onrender.com/" target="_blank">
-                                        <div className='text-sm font-bold border-2 border-button  px-2 py-2 md:px-6 md:py-2 hover:bg-button hover:text-gray-900'>Live Demo</div>
-                                    </a>
-                                    <a href="https://github.com/AkashDange03/RealTimeTracker" target="_blank">
-                                        <div className='text-sm  font-bold border-2 border-button  px-2 py-2 md:px-6 md:py-2 hover:bg-button hover:text-gray-900'>Source Code</div>
-                                    </a>
-                                </div>
-                            </div>
-                            <img src={RealTimeTracker} alt="" className='w-[100%] md:w-[600px]' data-aos="fade-left" />
-                        </div>
-
-                        <a href="https://github.com/AkashDange03?tab=repositories">
-                            <button className='bg-button text-gray-900 px-4 py-2'>
-                                More
-                            </button>
-                        </a>
-
-                    </div>
+      {/* Projects Section */}
+      <div className="flex flex-wrap justify-center gap-8">
+        {(clicked === "hardware" ? hardwareProjects : softwareProjects).slice(0, 3).map(
+          (project, index) => (
+            <Card
+              key={index}
+              className="w-[300px] bg-transparent border border-[#22c55e] rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            >
+              <CardBody className="p-6">
+                <Typography
+                  variant="h5"
+                  className="mb-4 font-semibold text-white"
+                >
+                  {project.title}
+                </Typography>
+                <Typography className="text-gray-300 mb-4">
+                  {project.description}
+                </Typography>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech, idx) => (
+                    <Button
+                      key={idx}
+                      className="bg-[#22c55e] text-white px-4 py-1 text-xs rounded-full mb-2"
+                      size="sm"
+                    >
+                      {tech}
+                    </Button>
+                  ))}
                 </div>
+              </CardBody>
+            </Card>
+          )
+        )}
+      </div>
 
-            </Container>
-        </>
-    )
+      {/* Horizontal Line */}
+      <hr className="w-[90%] my-20 m-5 border-t-2 border-[#22c55e] mx-auto" />
+    </div>
+  );
 }
 
-export default Projects
+export default Projects;
