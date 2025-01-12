@@ -44,43 +44,70 @@ const data = [
 
 function Skills() {
     const [clicked, setClicked] = useState("lang");
+
     return (
         <>
             <Container>
-                <div id="skills" className='w-full h-[80%] flex flex-col items-center gap-4' data-aos="fade-up" >
-                    <div className='w-full flex justify-center text-2xl font-thin my-4'>
-                        <h1 className='text-4xl md:text-4xl font-bold text-button '>Skills</h1>
+                <div id="skills" className='w-full h-auto flex flex-col items-center gap-4' data-aos="fade-up">
+                    <div className='w-full flex justify-center my-3'>
+                        <h1 className='text-3xl font-bold text-button'>Skills</h1>
                     </div>
 
-                    <div className='w-auto bg-primary flex justify-around md:gap-4 py-2 px-2 border-2 border-border rounded-md'>
-                        <button className={`w-[50%] py-2 px-6 rounded-md hover:bg-button hover:text-gray-900 text-sm md:font-semibold ${clicked === 'lang' ? 'bg-button text-gray-900' : null}`} onClick={() => setClicked("lang")}>
+                    {/* Compact Navbar */}
+                    <div className='w-full flex justify-around gap-1 py-1 px-1 bg-primary border-2 border-border rounded-md md:w-[80%] lg:w-[60%]'>
+                        <button
+                            className={`flex-grow py-1 px-2 text-xs md:text-sm lg:text-base rounded-md hover:bg-button hover:text-gray-900 font-medium ${
+                                clicked === 'lang' ? 'bg-button text-gray-900' : ''
+                            }`}
+                            onClick={() => setClicked("lang")}
+                        >
                             Languages
                         </button>
-                        <button className={`w-[50%] py-2 px-6 rounded-md hover:bg-button hover:text-gray-900 text-sm md:font-semibold ${clicked === 'frontend' ? 'bg-button text-gray-900' : null}`} onClick={() => setClicked("frontend")}>
+                        <button
+                            className={`flex-grow py-1 px-2 text-xs md:text-sm lg:text-base rounded-md hover:bg-button hover:text-gray-900 font-medium ${
+                                clicked === 'frontend' ? 'bg-button text-gray-900' : ''
+                            }`}
+                            onClick={() => setClicked("frontend")}
+                        >
                             Frontend
                         </button>
-                        <button className={`w-[50%] py-2 px-6 rounded-md hover:bg-button hover:text-gray-900 text-sm md:font-semibold ${clicked === 'backend' ? 'bg-button text-gray-900' : null}`} onClick={() => setClicked("backend")}>
+                        <button
+                            className={`flex-grow py-1 px-2 text-xs md:text-sm lg:text-base rounded-md hover:bg-button hover:text-gray-900 font-medium ${
+                                clicked === 'backend' ? 'bg-button text-gray-900' : ''
+                            }`}
+                            onClick={() => setClicked("backend")}
+                        >
                             Backend
                         </button>
-                        <button className={`w-[50%] py-2 px-6 rounded-md hover:bg-button hover:text-gray-900 text-sm md:font-semibold ${clicked === 'tools' ? 'bg-button text-gray-900' : null}`} onClick={() => setClicked("tools")}>
+                        <button
+                            className={`flex-grow py-1 px-2 text-xs md:text-sm lg:text-base rounded-md hover:bg-button hover:text-gray-900 font-medium ${
+                                clicked === 'tools' ? 'bg-button text-gray-900' : ''
+                            }`}
+                            onClick={() => setClicked("tools")}
+                        >
                             Tools
                         </button>
                     </div>
 
-                    {/* grid */}
-                    <div className='grid grid-cols-3 w-full md:grid-cols-4 md:w-[50%] gap-10 my-4'>
-                        {data.filter((item) => item.tag === clicked)
+                    {/* Compact Skills Grid */}
+                    <div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 w-full md:w-[70%] lg:w-[50%] gap-4 md:gap-6 lg:gap-8 my-3'>
+                        {data
+                            .filter((item) => item.tag === clicked)
                             .map((ele) => (
-                                <div className='flex flex-col items-center gap-2' key={ele.id}>
-                                    <img src={ele.imageUrl} alt={ele.text} className='size-16 bg-primary p-2 rounded-full border-2 border-border' />
-                                    <h1>{ele.text}</h1>
+                                <div className='flex flex-col items-center gap-1' key={ele.id}>
+                                    <img
+                                        src={ele.imageUrl}
+                                        alt={ele.text}
+                                        className='w-10 h-10 lg:w-12 lg:h-12 bg-primary p-1 rounded-full border-2 border-border'
+                                    />
+                                    <h1 className='text-xs md:text-sm lg:text-sm'>{ele.text}</h1>
                                 </div>
                             ))}
                     </div>
                 </div>
             </Container>
         </>
-    )
+    );
 }
 
-export default Skills
+export default Skills;

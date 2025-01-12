@@ -20,25 +20,43 @@ function App() {
 
   // Function to generate stars
   const renderStars = () => {
-    const starsArray = Array.from({ length: 200 }, (_, index) => {
+    const starsArray = Array.from({ length: 150 }, (_, index) => {
       const randomX = Math.random() * 100; // Random horizontal position
       const randomY = Math.random() * 100; // Random vertical position
-      const randomDuration = Math.random() * 10 + 5; // Random animation duration
+      const randomSize = Math.random() * 3 + 1; // Random size between 1px and 4px
+      const randomDuration = Math.random() * 20 + 10; // Random animation duration between 10s and 30s
+      const randomOpacity = Math.random() * 0.5 + 0.5; // Random opacity between 0.5 and 1
+
       const style = {
         position: 'absolute',
         left: `${randomX}%`,
         top: `${randomY}%`,
-        width: '2px',
-        height: '2px',
+        width: `${randomSize}px`,
+        height: `${randomSize}px`,
         background: 'white',
         borderRadius: '50%',
-        boxShadow: '0 0 6px rgba(255, 255, 255, 0.8)',
+        opacity: randomOpacity,
+        boxShadow: `0 0 ${randomSize * 2}px rgba(255, 255, 255, 0.8)`,
         animation: `moveStars ${randomDuration}s linear infinite`,
       };
+
       return <div key={index} style={style} />;
     });
 
-    return <div style={{ position: 'fixed', width: '100vw', height: '100vh', zIndex: '-1', overflow: 'hidden', backgroundColor: 'black' }}>{starsArray}</div>;
+    return (
+      <div
+        style={{
+          position: 'fixed',
+          width: '100vw',
+          height: '100vh',
+          zIndex: '-1',
+          overflow: 'hidden',
+          backgroundColor: 'black',
+        }}
+      >
+        {starsArray}
+      </div>
+    );
   };
 
   return (
@@ -56,7 +74,7 @@ function App() {
         `}
       </style>
       <Toaster />
-      {renderStars()} 
+      {renderStars()}
       <Navbar />
       <LandingPage />
       <Skills />
